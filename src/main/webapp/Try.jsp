@@ -84,8 +84,6 @@ p {
 
 	<c:forEach items="${doiList}" var="item">
 		<a href="10.15771/PURE.844693"></a>
-
-
 	</c:forEach>
 
 	<!--  
