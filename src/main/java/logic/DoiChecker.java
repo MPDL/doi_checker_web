@@ -20,9 +20,9 @@ import org.postgresql.Driver;
 public class DoiChecker {
 
 	private final static String USERNAME = "mpdl_azubi";
-	private final static String PASSWORD = "37L*9D'%sb4}n%";
+	private final static String PASSWORD = "xxx";
 	private final static String dbUrl = "jdbc:postgresql://localhost:5432/doi";
-	private final static String PASSWORDEMAIL = "RZFUAAjT=b";
+	private final static String PASSWORDEMAIL = "xxx";
 	private final static String IDEMAIL = "pubman";
 	private final static String[] TO = new String [] {"mark.wagner@mpdl.mpg.de"};
 	private final static String EMAILHOST = "mail.mpisoc.mpg.de";
