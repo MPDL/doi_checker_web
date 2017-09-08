@@ -41,7 +41,7 @@ public class DoiChecker {
 	private final static String dbUrl = PROPERTIES.getProperty("DB_URL");
 	private final static String PASSWORDEMAIL = PROPERTIES.getProperty("EMAIL_PASSWORD");
 	private final static String IDEMAIL = PROPERTIES.getProperty("EMAIL_USER");
-	private final static String[] TO = new String[] { PROPERTIES.getProperty("EMAIL_TO") };
+	private final static String[] TO = PROPERTIES.getProperty("EMAIL_TO").split(",");
 	private final static String EMAILHOST = PROPERTIES.getProperty("EMAIL_HOST");
 	private final static String FROMEMAIL = PROPERTIES.getProperty("EMAIL_FROM");
 	public final static String DOXI_URL = PROPERTIES.getProperty("DOXI_URL");
