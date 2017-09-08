@@ -30,7 +30,7 @@ public class DoiCheckerServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	public Scheduler doiCheckerScheduler;
-
+	
 	/**
 	 * Default constructor.
 	 */
@@ -39,7 +39,7 @@ public class DoiCheckerServlet extends HttpServlet {
 			JobDetail job1 = JobBuilder.newJob(CheckDOIjob.class).withIdentity("job1", "group1").build();
 
 			Trigger trigger = TriggerBuilder.newTrigger().withIdentity("doiCheckerTrigger", "group1")
-					.startAt(DateBuilder.todayAt(9, 10, 0)) // first fire time 15:00:00 tomorrow
+					.startAt(DateBuilder.todayAt(11,8,0)) // first fire time 15:00:00 tomorrow
 					.withSchedule(SimpleScheduleBuilder.simpleSchedule().withIntervalInHours(24) // interval is actually
 																									// set at 24 hours'
 																									// worth of
