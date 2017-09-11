@@ -20,6 +20,7 @@ p {
 <body>
 	<%@ page import="java.util.*"%>
 	<%@ page import="logic.*"%>
+	<%@ page import="javax.servlet.*"%>
 	<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 	<h1>DOI CHECKER INTERFACE</h1>
@@ -40,19 +41,44 @@ p {
 		<input type="text" name="displayDoiChecksByResponseCode" value="404">
 		<input type="submit">
 	</form>
-	<%
-		DoiChecker myDoiChecker = new DoiChecker(DoiChecker.DOXI_URL);
-		if (request.getParameter("checkDoi") != null) {
-			myDoiChecker.check();
-		} else if (request.getParameter("displayDoiChecksByDoi") != null) {
-			String doi = request.getParameter("displayDoiChecksByDoi");
-			List<DoiResponse> myList = myDoiChecker.getHistorie(doi);
-			pageContext.setAttribute("doiList", myList);
-		} else if (request.getParameter("displayDoiChecksByResponseCode") != null) {
-			String responseCode = request.getParameter("displayDoiChecksByResponseCode");
-			List<DoiResponse> myList = myDoiChecker.getByResponseCode(Integer.parseInt(responseCode));
-			pageContext.setAttribute("doiList", myList);
+	
+	<%!
+	private void writeMessage(String msg, java.io.Writer myOut)
+	{   try{
+	 	myOut.write(msg);
 		}
+	catch (Exception e) {
+		
+	}
+	}
+	
+	%>
+	
+	<%
+		
+	
+		try {
+			DoiChecker myDoiChecker = new DoiChecker(DoiChecker.DOXI_URL);
+			if (request.getParameter("checkDoi") != null) {
+				myDoiChecker.check();
+			} else if (request.getParameter("displayDoiChecksByDoi") != null) {
+				String doi = request.getParameter("displayDoiChecksByDoi");
+				List<DoiResponse> myList = myDoiChecker.getHistorie(doi);
+				pageContext.setAttribute("doiList", myList);
+			} else if (request.getParameter("displayDoiChecksByResponseCode") != null ) {
+				String responseCode = request.getParameter("displayDoiChecksByResponseCode");
+				List<DoiResponse> myList = myDoiChecker.getByResponseCode(Integer.parseInt(responseCode));
+				pageContext.setAttribute("doiList", myList);
+			}
+		}
+		catch (Exception e)
+		{
+			writeMessage("Fehler: " + e.getMessage(), out);
+		}
+		
+		
+		
+		
 	%>
 	<br>
 	<table border="1">
